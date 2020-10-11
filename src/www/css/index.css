@@ -1,0 +1,469 @@
+/*
+for mobile
+delete all classes except Body{} and *{}, they can be modified.
+ */
+* {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0); /* make transparent link selection, adjust last value opacity 0 to 1.0 */
+}
+
+body {
+  -webkit-touch-callout: none;        /* prevent callout to copy image, etc when tap to hold */
+  -webkit-text-size-adjust: none;       /* prevent webkit from resizing text to fit */
+  -webkit-user-select: none;          /* prevent copy paste, to allow, change 'none' to 'text' */
+  background-color: #fff;
+  font-family: system-ui, -apple-system, -apple-system-font, 'Segoe UI', 'Roboto', sans-serif;
+  font-size: 14px;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+
+  /* Padding to avoid the "unsafe" areas behind notches in the screen */
+  padding: env(safe-area-inset-top, 0) env(safe-area-inset-right, 0) env(safe-area-inset-bottom, 0) env(safe-area-inset-right, 0);
+  width: 100%;
+}
+
+.welcome_con {
+  width: 100%;
+  height: 100%;
+  background: none;
+  color: #666;
+  font-size: 3vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+.welcome_image {
+  width: 45vw;
+  height: 45vw;
+}
+
+.welcome_header {
+  font-size: 5vw;
+  text-transform: uppercase;
+}
+
+.welcome_sub {
+  font-size: 3vw;
+  color: #777;
+}
+
+.welcome_sub_detail {
+  font-size: 2.5vw;
+  color: #999;
+}
+
+/* pages starts here */
+.root {
+  width: 100vw;
+  height: 100vh;
+  background: #ddd;
+  position: fixed;
+  padding: 0;
+  margin: 0;
+}
+
+.header {
+  width: 100vw;
+  height: 6vh;
+  padding-top: 1vh;
+  padding-bottom: 1vh;
+  background: #7a807c;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+}
+
+.container_header {
+  width: 100vw;
+  height: 6vh;
+  background: #fff;
+  position: fixed;
+  padding-top: 1vh;
+  padding-bottom: 1vh;
+  border-top: solid 0.1vh #eee;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  bottom: 0;
+}
+
+.menu_box {
+  width: 20vw;
+  height: 7vh;
+  background: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  border-bottom: none;
+  transition: border 0.1s;
+}
+
+.menu_box_icon {
+  width: 8vw;
+  height: 4vh;
+}
+
+.menu_box_text {
+  font-size: 3.5vw;
+  margin: 0;
+  color: #999;
+}
+
+.container {
+  width: 100vw;
+  height: 84vh;
+  background: #f3f3f3;
+  position: fixed;
+  right: 0;
+  overflow-y: scroll;
+}
+
+.btn {
+  width: 35vw;
+  min-height: 5vh;
+  padding: 1vw;
+  background: #7a807c;
+  text-align: center;
+  outline: none;
+  border: none;
+  font-size: 4vw;
+  color: #fff;
+  border-radius: 1vw;
+  transition: opacity 0.1s;
+  margin-top: 2vw;
+}
+
+.btn:active {
+  opacity: 0.8;
+}
+
+.btn_larger {
+  width: 40vw;
+  min-height: 6vh;
+  padding: 2vw;
+  background: #7a807c;
+  text-align: center;
+  outline: none;
+  border: none;
+  font-size: 4vw;
+  color: #fff;
+  border-radius: 1vw;
+  transition: opacity 0.1s;
+  margin: 1vw;
+}
+
+.btn_larger:active {
+  opacity: 0.8;
+}
+
+.logo {
+  width: 15vw;
+  height: 15vw;
+  border-radius: 4vw;
+}
+
+.item_image {
+  width: 45vw;
+  height: 45vw;
+}
+
+.content_list {
+  width: 96vw;
+  height: auto;
+  background: none;
+  padding: 2vw;
+  font-size: 3vw;
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  flex-wrap: wrap;
+}
+
+.content_list_column {
+  width: 96vw;
+  height: auto;
+  background: none;
+  /* padding: 2vw; */
+  font-size: 3vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+.content_box {
+  width: 45vw;
+  min-height: 25vh;
+  background: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  border-bottom: solid 0.5vw #eee;
+  margin: 1vw;
+  border-radius: 1vh;
+  padding-top: 0vw;
+  padding-bottom: 2vw;
+}
+
+.content_box_large {
+  width: 98vw;
+  min-height: 40vh;
+  background: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  border-bottom: solid 0.5vw #eee;
+  margin: 1vw;
+  border-radius: 1vh;
+  padding-top: 5vh;
+  padding-bottom: 5vh;
+}
+
+.title_bright {
+  font-size: 4vw;
+  color: #aaa;
+  text-transform: uppercase;
+  padding: 1vw;
+}
+
+.home_title {
+  font-size: 4vw;
+  color: #aaa;
+  text-transform: uppercase;
+  padding: 0;
+  margin: 0;
+}
+
+.title_small {
+  font-size: 3.5vw;
+  color: #666;
+  text-transform: uppercase;
+  padding: 0.5vw;
+}
+
+.sub_title {
+  font-size: 3vw;
+  color: #aaa;
+  text-transform: lowercase;
+  padding: 0.5vw;
+  margin: 0;
+}
+
+.full_page {
+  width: 100vw;
+  height: 100vh;
+  background: #f3f3f3;
+  position: fixed;
+  z-index: 100;
+  transition: margin 0.5s;
+}
+.alert_page {
+  width: 100vw;
+  min-height: 20vh;
+  background: none;
+  position: fixed;
+  z-index: 100;
+  transition: margin 1s;
+  bottom: -100vh;
+}
+
+#select_trader {
+  z-index: 101;
+  margin-left: 100vw;
+}
+
+#place_order {
+  z-index: 102;
+  margin-left: 100vw;
+}
+
+#index_page {
+  z-index: 200;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background: #fff;
+}
+
+#register_page {
+  z-index: 202;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background: #fff;
+  margin-left: 100vw;
+}
+
+#sign_page {
+  z-index: 201;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background: #fff;
+  margin-left: 100vw;
+}
+
+#loading_page {
+  z-index: 100;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background: #fff;
+  margin-left: 100vw;
+}
+#alert_page {
+  z-index: 300;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background: none;
+  margin-left: 0vw;
+}
+
+.full_page_header {
+  width: 98vw;
+  height: 6vh;
+  padding: 1vh;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: row;
+  border-bottom: solid 0.5vw #eee;
+}
+
+.full_page_container {
+  width: 100vw;
+  height: 92vh;
+  background: none;
+  overflow-y: scroll;
+}
+
+.full_list {
+  width: 96vw;
+  height: auto;
+  background: none;
+  padding: 2vw;
+  font-size: 3vw;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.order_list {
+  width: 96vw;
+  height: auto;
+  background: none;
+  padding: 2vw;
+  font-size: 3vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.content_box_sellers {
+  width: 45vw;
+  height: 25vh;
+  background: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  border-bottom: solid 0.5vw #eee;
+  margin: 1vw;
+  padding-top: 2vw;
+  padding-bottom: 2vw;
+}
+
+.icon_btn {
+  width: 7vw;
+  height: 7vw;
+}
+
+.pro_pic {
+  width: 15vw;
+  height: 15vw;
+  background: #72d14b;
+  color: #fff;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-transform: uppercase;
+  border-radius: 10vw;
+}
+
+.large_image {
+  width: 25vw;
+  height: 25vw;
+}
+
+.complement_three {
+  color: #d14b72;
+  font-size: 3.5vw;
+  text-transform: lowercase;
+  padding: 0.5vw;
+  margin: 0;
+}
+
+.input_ {
+  width: 60vw;
+  height: 4vh;
+  padding: 2vw;
+  margin: 2vh;
+  text-align: center;
+  font-size: 3vw;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  background: #fff;
+  border-radius: 1vw;
+  border-bottom: solid #eee 0.2vw;
+}
+
+.input_ img {
+  width: 8vw;
+  height: 8vw;
+}
+
+.input_ input,
+.input_ select {
+  outline: none;
+  border: none;
+  font-size: 3vw;
+  text-align: center;
+}
+
+.fancy_form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.store_head {
+  width: 100vw;
+  height: 30vh;
+  background: #72d14b;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}

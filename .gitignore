@@ -1,0 +1,8 @@
+node_modules
+*~
+cov-*
+coverage
+plato
+.idea
+/.nyc_output
+/*.env

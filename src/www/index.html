@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta name="format-detection" content="telephone=no">
+        <meta name="msapplication-tap-highlight" content="no">
+        <meta name="description" content="this is an hybrid aba-trader app">
+        <meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover">
+        <link rel="stylesheet" type="text/css" href="css/index.css">
+        <link rel="stylesheet" type="text/css" media="screen and (min-width: 480px)" href="css/index_web.css">
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+        <script src="https://smtpjs.com/v3/smtp.js"></script>
+        <title>Aba Trader</title>
+    </head>
+    <body>
+    <!-- do not delete the below script ^ as it would be useful in the final build of the app() -->
+
+    <script type="text/javascript">
+
+        document.addEventListener("deviceready", onDeviceReady, false);
+        function onDeviceReady(){
+        document.addEventListener("backbutton", onBackKeyDown, false );
+        document.addEventListener("pause", onPause, false);
+        document.addEventListener("resume", onResume, false);
+        console.log("device is ready");
+        nav("buy");
+
+        function onPause() { 
+        }
+
+        function onResume() {
+        }
+
+        function onBackKeyDown() {
+    
+        }
+    }
+    </script>
+    <!-- do not delete the script above , pls comment it out  -->
+
+    <!-- the class welcome_con is just a welcome placeholder, it should be removed before starting anything -->
+    <div class="welcome_con" style="display: none;">
+        <h2 class="welcome_header">Welcome To AbaTrader App Team</h2>
+        <p class="welcome_sub">Solution for Aba Traders</p>
+        <i class="welcome_sub_detail">Duration : Less than 6 weeks</i>
+
+        <img src="img/hello.gif" class="welcome_image">
+    </div>
+    <div class="alert_page" id="alert_page">
+        <p class="sub_title" id="alert_text"></p>
+        <button class="btn_larger" onclick=hideAlert()>Close</button>
+    </div>
+    <div class="full_page" id="loading_page">
+        <img src="img/loading.gif" class="welcome_image">
+    </div>
+    <div class="root">
+        <div class="full_page" id="sign_page">
+            <h1 class="title_bright">Login</h1>
+            
+            <div class="input_">  
+                <input  type="text" id="email" placeholder="Email">   
+            </div>
+            <div class="input_">  
+                <input  type="Password" id="password" placeholder="Password">   
+            </div>
+            <button class="btn_larger" id="signin" onclick=login()>Sign in</button>
+        
+            <button class="btn_larger" style="background: #d14b72;" onclick=closeSignin()>Cancel</button>
+            <p class="sub_title">dont have an account? <b class="complement_three" onclick=openRegister()>register</b></p>
+        </div>
+        <div class="full_page" id="register_page">
+            <h1 class="title_bright">Get started</h1>
+            <div class="input_">  
+                <input  type="text" id="r_email" placeholder="Email">   
+            </div>
+            <div class="input_">  
+                <input  type="text" id="r_firstname" placeholder="First Name">   
+            </div>
+            <div class="input_">  
+                <input  type="text" id="r_lastname" placeholder="Last Name">   
+            </div>
+            <div class="input_">  
+                <input  type="text" id="r_phone" placeholder="Phone">   
+            </div>
+            <div class="input_">  
+                <input  type="Password" id="r_password" placeholder="Password">   
+            </div>
+            <button class="btn_larger" id="register" onclick=register()>Register</button>
+            <button class="btn_larger" style="background: #d14b72;" onclick=closeRegister()>Cancel</button>
+            
+        </div>
+        <div class="full_page" id="index_page">
+            <img src="img/abia-trader-logo.jpg" class="logo">
+            <h1 class="home_title">Abia Trader</h1>
+            <h6 class="title_bright">Quality Products, Great Prices</h6>
+            <img src="img/hello.gif" class="welcome_image">
+            <button class="btn_larger" onclick=closexIndex()>Buy</button>
+            <button class="btn_larger" style="background: #73d14b;" onclick=openSignin()>Sell</button>  
+        </div>
+
+        <div class="full_page" id="place_order">
+            <div class="full_page_header">
+                <img src="img/icons/back.svg" class="icon_btn" onclick=closeBooking()>
+                <h2 class="sub_title"><b class="complement_three">Order item</b></h2>
+            </div>
+            <div class="full_page_container">
+                <div id="ordering_list" class="order_list">
+                    <img id="order_product_img" src="img/food/tomato.png" class="large_image">
+                    <h1 class="title_bright" id="order_price" style="margin:0;">&#8358;50</h1>
+                    <div class="input_">
+                        <img src="img/icons/remove.svg" onclick=decrement("ordered_item")>
+                        <input  type="number" placeholder="Number of item needed" id="order_qty">
+                        <img src="img/icons/sell.svg" onclick=increment("ordered_item")>
+                    </div>
+                    <div class="input_">
+                        
+                        <input  type="text" id="order_name" placeholder="Name">
+                        
+                    </div>
+                    <div class="input_">
+                        
+                        <input  type="number" id="order_phone" placeholder="Mobile number">
+                        
+                    </div>
+                    <div class="input_">
+                        <input  type="text" id="order_address" placeholder="Address">
+                    </div>
+                    <button class="btn_larger" id="order_btn" onclick=orderProduct()>Order</button>
+                </div>
+            </div>
+            
+        </div>
+        <div class="full_page" id="select_trader">
+            <div class="full_page_header">
+                <img src="img/icons/back.svg" class="icon_btn" onclick=closeTraders()>
+                <h2 class="sub_title">select a <b class="complement_three" id="complement">tomato</b> trader</h2>
+            </div>
+            <h1 class="title_bright"  id="header_title">tomato traders in lagos</h1>
+            <div class="full_page_container">
+                <div id="seller_list" class="full_list">
+
+                <div class="content_box_sellers">
+                    <div class="pro_pic">
+                        j
+                    </div>
+                    <h2 class="title_small">jake leke</h2>
+                    <button class="btn" onclick=openBooking()>&#8358; 50</button>
+                </div>
+                <div class="content_box_sellers">
+                    <div class="pro_pic">
+                        o
+                    </div>
+                    <h2 class="title_small">okonkwo Judy </h2>
+                    <button class="btn" onclick=openBooking()>&#8358; 48</button>
+                </div>
+                <div class="content_box_sellers">
+                    <div class="pro_pic">
+                        e
+                    </div>
+                    <h2 class="title_small">Evageline smith</h2>
+                    <button class="btn" onclick=openBooking()>&#8358; 55</button>
+                </div>
+                <div class="content_box_sellers">
+                    <div class="pro_pic">
+                        m
+                    </div>
+                    <h2 class="title_small">Mr john</h2>
+                    <button class="btn" onclick=openBooking()>&#8358; 30</button>
+                </div>
+                <div class="content_box_sellers">
+                    <div class="pro_pic">
+                        t
+                    </div>
+                    <h2 class="title_small">tunde paul</h2>
+                    <button class="btn" onclick=openBooking()>&#8358; 45</button>
+                </div>
+                <div class="content_box_sellers">
+                    <div class="pro_pic">
+                        p
+                    </div>
+                    <h2 class="title_small">peter ola</h2>
+                    <button class="btn" onclick=openBooking()>&#8358; 40</button>
+                </div>
+            </div>
+        </div>
+            
+        </div>
+
+        <div class="header">
+            <img src="img/abia-trader-logo.jpg" class="logo">
+        </div>
+
+        <div class="container">
+            
+
+            <!-- body content goes in content_box -->
+            
+            <!-- product page -->
+            <div class="content_list_column" id="product_selection" style="display:none;"> 
+                <h1 class="title_bright" id="head_title">Select food item</h1>
+            <div class="content_list" id="product_selection_list">   
+            </div>
+            </div>
+            <!-- sell page -->
+            <div class="content_list_column" id="sell_section" style="display:none;">
+                <h1 class="title_bright" id="sell_header">Enter A Product</h1>
+                <div class="full_page_container">
+                    <div id="product_details" class="order_list">
+                        <div class="input_">
+                            <input type="text" id="product_name" placeholder="Product Name">
+                        </div>
+                        <div class="input_">
+                            <input type="file" id="product_image" name="file" placeholder="Product Photo">
+                        </div>
+                        <div class="input_">
+                            <img src="img/icons/remove.svg" onclick=decrement("product_price")>
+                            <input  type="number" placeholder="Price" id="product_price">
+                            <img src="img/icons/sell.svg" onclick=increment("product_price")>
+                        </div>
+                        <button class="btn_larger" id="product_add_btn" onclick=enterProduct(event)>Submit</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- my store page -->
+            <div class="content_list_column" id="my_store" style="display:none;"> 
+                <div class="store_head">
+                    <div class="pro_pic" id="initial" style="background:#4b72d1;">
+                        F
+                    </div>
+                    <h2 class="title_small" id="p_fullname" style="color:#fff;">Franklin Ejike's store</h2>
+                    <p class="sub_title" id="p_email" style="color:#fff;">ejike.franklin@ymail.com</p>
+                    <p class="sub_title" id="city" style="color:#fff;">Lagos</p>
+
+                </div>
+                <h1 class="title_bright" id="store_header">My Products</h1>
+                <div class="content_list" id="my_products" >
+                </div>
+                <!-- update product page-->
+                <div class="content_list_column" id="update_product" style="display:none;">
+                    <h1 class="title_bright" id="sell_header">Make Your changes</h1>
+                    <div class="order_list" id="product_update_form" >
+                    
+                    </div>
+                </div>
+            </div>
+            <div class="content_list_column" id="more_selection" style="display:none;"> 
+                <h1 class="title_bright">More</h1>
+                <div class="content_list" style="justify-content: center;">
+                    <button class="btn_larger" onclick=openxIndex()>Logout</button>
+                </div>
+            </div>
+        </div>
+        <div class="container_header">
+                <div class="menu_box" id="buy_nav" onclick=nav("buy")>
+                    <img src="img/icons/buy.svg" class="menu_box_icon">
+                    <p class="menu_box_text">Buy</p>
+                </div>
+                <div class="menu_box" id="sell_nav" onclick=openSignin()>
+                    <img src="img/icons/sell.svg" class="menu_box_icon">
+                    <p class="menu_box_text">Sell</p>
+                </div>
+                <div class="menu_box" id="Mystore_nav" onclick=nav("Mystore")>
+                    <img src="img/icons/store.svg" class="menu_box_icon">
+                    <p class="menu_box_text">My Store</p>
+                </div>
+                <div class="menu_box" id="more_nav" onclick=nav("more")>
+                    <img src="img/icons/more.svg" class="menu_box_icon">
+                    <p class="menu_box_text">More</p>
+                </div>
+                <div class="menu_box" id="home_nav" onclick=openxIndex()>
+                    <img src="img/icons/home.svg" class="menu_box_icon">
+                    <p class="menu_box_text">Home</p>
+                </div>
+            </div>
+    </div>
+
+    <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
+    </body>
+</html>
+
